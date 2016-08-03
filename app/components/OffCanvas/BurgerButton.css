@@ -1,0 +1,11 @@
+.container {
+  padding:10px;
+  background: #302c2d;
+  color: #fbbb1c;
+  display: inline-flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  top:0;
+  cursor: pointer;
+}

@@ -6,7 +6,7 @@ import facebook from './facebook';
 const rootReducer = combineReducers({
   menuOpen: menu,
   facebook,
-  routing
+  routing,
 });
 
 export default rootReducer;

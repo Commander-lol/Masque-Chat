@@ -1,0 +1,29 @@
+.list {
+  padding: 0;
+}
+.element {
+  width:100%;
+  padding:0;
+  list-style: none;
+  text-decoration: none;
+  height: 50px;
+  line-height:50px;
+  text-align: center;
+  color: #fbbb1c;
+}
+
+.header {
+  composes: element;
+  font-weight:bold;
+  border-bottom: #fbbb1c 3px solid;
+  color: #ABA993;
+}
+
+.link {
+  composes: element;
+}
+
+.link:hover {
+  background-color: #fbbb1c;
+  color: #302c2d;
+}

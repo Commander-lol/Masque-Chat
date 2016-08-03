@@ -11,7 +11,7 @@ const App = ({ menuOpen, openMenu, closeMenu, children }) => (
   <OffCanvas
     visible={menuOpen}
     clickAction={menuOpen ? closeMenu : openMenu}
-    menuContent={<AppMenu/>}
+    menuContent={<AppMenu />}
   >
     <main>
       {children}
@@ -28,7 +28,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    menuOpen: state.menuOpen
+    menuOpen: state.menuOpen,
   };
 }
 

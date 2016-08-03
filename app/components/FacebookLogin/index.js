@@ -1,26 +1,31 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import css from './styles.css';
 
-const Row = ({children}) => (
+const Row = ({ children }) => (
   <div className={css.row}>
     {children}
   </div>
-)
+);
+
+Row.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default class FacebookLogin extends Component {
-  state = {
-    username: "",
-    password: "",
-    viewPassword: false,
-  }
 
   static propTypes = {
     logIn: PropTypes.func.isRequired,
     redirect: PropTypes.func.isRequired,
   }
 
-  update = prop => ({target: {value}}) => this.setState({[prop]: value})
+  state = {
+    username: '',
+    password: '',
+    viewPassword: false,
+  }
+
+  update = prop => ({ target: { value } }) => this.setState({ [prop]: value })
 
   loginAndRedirect = () => {
     this.props.logIn(this.state.username, this.state.password);
@@ -28,7 +33,7 @@ export default class FacebookLogin extends Component {
   }
 
   render() {
-    const {viewPassword, username, password} = this.state;
+    const { viewPassword, username, password } = this.state;
     return (
       <div>
         <Row>
@@ -43,6 +48,6 @@ export default class FacebookLogin extends Component {
           <button className={css.button} onClick={this.loginAndRedirect}>log in</button>
         </Row>
       </div>
-    )
+    );
   }
 }
