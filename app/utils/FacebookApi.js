@@ -20,6 +20,16 @@ export default class FacebookApi {
     });
   }
 
+  getUserData = async id => {
+    const api = await this.api;
+    return new Promise((res, rej) => {
+      api.getUserInfo(id, (err, info) => {
+        if (err) rej(err);
+        else res(info);
+      });
+    });
+  }
+
   isLoggedIn = async () => {
     try {
       await this.api;

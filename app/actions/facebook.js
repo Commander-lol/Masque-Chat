@@ -1,8 +1,11 @@
 import FacebookApi from '../utils/FacebookApi';
+import { isArray } from 'lodash';
 
 export const LOGGING_IN = 'LOGGING_IN';
 export const LOG_IN_FAIL = 'LOG_IN_FAIL';
 export const LOG_IN_SUCCEED = 'LOG_IN_SUCCEED';
+export const LOAD_USER = 'LOAD_USER';
+export const LOAD_THREADS = 'LOADS_THREADS';
 
 export function loggingIn() {
   return {
@@ -22,6 +25,20 @@ export function logInSucceed(api) {
   };
 }
 
+export function loadUsers(userData) {
+  return {
+    type: LOAD_USER,
+    users: userData,
+  };
+}
+
+export function loadThreads(threads) {
+  return {
+    type: LOAD_THREADS,
+    threads,
+  };
+}
+
 export const logIn = (email, password) =>
   async dispatch => {
     dispatch(loggingIn());
@@ -33,3 +50,17 @@ export const logIn = (email, password) =>
       dispatch(logInFail());
     }
   };
+
+export const loadUsersWith = (ids, api) =>
+  async dispatch => {
+    let idList = ids;
+    if (!isArray(idList)) idList = [idList];
+    const users = await Promise.all(idList.map(id => api.getUserData(id)));
+    users.map(user => dispatch(loadUsers(user)));
+  }
+
+export const loadThreadsWith = (start, end, api) =>
+  async dispatch => {
+    const threads = await api.getThreadList(start, end);
+    dispatch(loadThreads(threads));
+  }

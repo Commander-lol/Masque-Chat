@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 0.5em;
+}
+
+.container:not(:last-child) {
+  padding-bottom:0.5em;
+  border-bottom: #302c2d 1px solid;
+}
+
+.image {
+  height:50px;
+  width:50px;
+  display: inline-block;
+  border:none;
+  outline: none;
+  border-radius: 50%;
+  margin:0.2em;
+}
+
+.text {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight:bold;
+}
